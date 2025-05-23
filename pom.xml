@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.acme.common</groupId>
   <artifactId>env-config</artifactId>
-  <version>1.7</version>
+  <version>1.8</version>
   <name>EnvConfig</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -15,4 +15,13 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.openliberty.tools</groupId>
+        <artifactId>liberty-maven-plugin</artifactId>
+        <version>3.10.3</version>
+      </plugin>
+    </plugins>
+  </build>
 </project>
