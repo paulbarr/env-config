@@ -1,7 +1,5 @@
 package com.acme.common;
 
-import com.ibm.websphere.runtime.ServerName;
-
 public class EnvConfig {
 
   private String adminApiEndpoint = "unknown";
@@ -14,8 +12,8 @@ public class EnvConfig {
     // serverEnv += System.getProperty("wlp.server.name");
     // serverEnv += System.getProperty("wlp.server.name");
 
-    serverEnv += ServerName.getDisplayName();
-    serverEnv += ServerName.getFullName();
+    serverEnv += com.ibm.websphere.runtime.ServerName.getDisplayName();
+    serverEnv += com.ibm.websphere.runtime.ServerName.getFullName();
 
     return serverEnv;
   }
