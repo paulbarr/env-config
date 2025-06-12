@@ -8,10 +8,6 @@ public class EnvConfig {
 
     String serverEnv = "";
 
-    // Liberty version of server name properties
-    // serverEnv += System.getProperty("wlp.server.name");
-    // serverEnv += System.getProperty("wlp.server.name");
-
     serverEnv += System.getProperty("wlp.server.name");
     serverEnv += System.getProperty("wlp.server.name");
 
