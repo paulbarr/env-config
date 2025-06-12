@@ -8,10 +8,6 @@ public class EnvConfig {
 
     String serverEnv = "";
 
-    // Liberty version of server name properties
-    // serverEnv += System.getProperty("wlp.server.name");
-    // serverEnv += System.getProperty("wlp.server.name");
-
     serverEnv += com.ibm.websphere.runtime.ServerName.getDisplayName();
     serverEnv += com.ibm.websphere.runtime.ServerName.getFullName();
 
