@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.acme.common</groupId>
   <artifactId>env-config</artifactId>
-  <version>1.7</version>
+  <version>2.2</version>
   <name>EnvConfig</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -14,5 +14,10 @@
       <version>9.0.0</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+    </dependency> 
   </dependencies>
 </project>

@@ -3,19 +3,19 @@ package com.acme.common;
 import java.util.Hashtable;
 
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.http.Cookie;
+
+import com.ibm.websphere.security.WSSecurityHelper;
 
 public class EnvConfig {
 
   private String adminApiEndpoint = "unknown";
 
-  public static InitialContext setInitialContextProps() throws Exception {
+  public static void saveCookie() throws Exception {
+    Cookie ltpaCookie = WSSecurityHelper.getLTPACookieFromSSOToken();
+    //Now save down the cookie to appropriate storage
 
-    Hashtable ht = new Hashtable();
-
-    InitialContext ctx = new InitialContext(ht);
-    String name = ctx.getNameInNamespace();
-    System.out.println("***** NAME: " + name);
-    return ctx;
   }
 
   private void setAdminApiEndpoint() {
@@ -36,7 +36,6 @@ public class EnvConfig {
 
   public EnvConfig() throws Exception {
     setAdminApiEndpoint();
-    setInitialContextProps();
     startWatcher();
   }
 }
