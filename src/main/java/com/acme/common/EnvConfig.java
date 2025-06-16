@@ -3,7 +3,6 @@ package com.acme.common;
 import java.util.Hashtable;
 
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 public class EnvConfig {
 
@@ -12,9 +11,6 @@ public class EnvConfig {
   public static InitialContext setInitialContextProps() throws Exception {
 
     Hashtable ht = new Hashtable();
-
-    ht.put("java.naming.factory.initial", "com.ibm.websphere.naming.WsnInitialContextFactory");
-    ht.put("java.naming.provider.url", "corbaloc:iiop:localhost:2809");
 
     InitialContext ctx = new InitialContext(ht);
     String name = ctx.getNameInNamespace();
