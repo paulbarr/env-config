@@ -1,17 +1,25 @@
 package com.acme.common;
 
+import java.util.Hashtable;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 public class EnvConfig {
 
   private String adminApiEndpoint = "unknown";
 
-  public static String configureEnvDiscovery() {
+  public static InitialContext setInitialContextProps() throws Exception {
 
-    String serverEnv = "";
+    Hashtable ht = new Hashtable();
 
-    serverEnv += com.ibm.websphere.runtime.ServerName.getDisplayName();
-    serverEnv += com.ibm.websphere.runtime.ServerName.getFullName();
+    ht.put("java.naming.factory.initial", "com.ibm.websphere.naming.WsnInitialContextFactory");
+    ht.put("java.naming.provider.url", "corbaloc:iiop:localhost:2809");
 
-    return serverEnv;
+    InitialContext ctx = new InitialContext(ht);
+    String name = ctx.getNameInNamespace();
+    System.out.println("***** NAME: " + name);
+    return ctx;
   }
 
   private void setAdminApiEndpoint() {
@@ -30,9 +38,9 @@ public class EnvConfig {
     watcher.stop();
   }
 
-  public EnvConfig() {
+  public EnvConfig() throws Exception {
     setAdminApiEndpoint();
-    configureEnvDiscovery();
+    setInitialContextProps();
     startWatcher();
   }
 }
