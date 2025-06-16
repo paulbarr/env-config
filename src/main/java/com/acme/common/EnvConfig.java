@@ -1,17 +1,21 @@
 package com.acme.common;
 
+import java.util.Hashtable;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.http.Cookie;
+
+import com.ibm.websphere.security.WSSecurityHelper;
+
 public class EnvConfig {
 
   private String adminApiEndpoint = "unknown";
 
-  public static String configureEnvDiscovery() {
+  public static void saveCookie() throws Exception {
+    Cookie ltpaCookie = WSSecurityHelper.getLTPACookieFromSSOToken();
+    //Now save down the cookie to appropriate storage
 
-    String serverEnv = "";
-
-    serverEnv += com.ibm.websphere.runtime.ServerName.getDisplayName();
-    serverEnv += com.ibm.websphere.runtime.ServerName.getFullName();
-
-    return serverEnv;
   }
 
   private void setAdminApiEndpoint() {
@@ -30,9 +34,8 @@ public class EnvConfig {
     watcher.stop();
   }
 
-  public EnvConfig() {
+  public EnvConfig() throws Exception {
     setAdminApiEndpoint();
-    configureEnvDiscovery();
     startWatcher();
   }
 }
